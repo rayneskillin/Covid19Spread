@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 """
 Created on Sat May 23 19:59:06 2020
-
 @author: rayneskillin
 """
 import pandas as pd
@@ -32,13 +31,11 @@ while a<25:
     real_name = df.at[a,'Business Name']
     bus_id = df.at[a,'ID']
     
-    
     url = 'https://api.yelp.com/v3/businesses/search'
     params = {'latitude': lat ,'longitude': long,}
     req = requests.get(url, params=params, headers=headers)
     parsed = json.loads(req.text)
     businesses = parsed["businesses"]
-
 
     for business in businesses:
     
@@ -59,8 +56,3 @@ while a<25:
                     writer = csv.DictWriter(csvfile, fieldnames= fields)  
                     writer.writerows(mydict)
     a += 1
-            
-        
-    
-       
-    
